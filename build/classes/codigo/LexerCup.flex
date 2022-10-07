@@ -24,16 +24,19 @@ espacio=[ ,\t,\r,\n]+
 {espacio} {/*Ignore*/}
 
 /* Comentarios */
-( "//"(.)* ) {/*Ignore*/}
+( "//" ) {/*Ignore*/}
 
 /* Comillas */
 ( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
 
 /* Tipos de datos */
-( byte | char | long | float | double ) {return new Symbol(sym.T_dato, yychar, yyline, yytext());}
+( byte | char | long | double ) {return new Symbol(sym.T_dato, yychar, yyline, yytext());}
 
 /* Tipo de dato Int (Para el main) */
 ( "int" ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
+
+/* Tipo de dato Float (Para el main) */
+( "float" ) {return new Symbol(sym.Float, yychar, yyline, yytext());}
 
 /* Tipo de dato String */
 ( String ) {return new Symbol(sym.Cadena, yychar, yyline, yytext());}
@@ -53,14 +56,14 @@ espacio=[ ,\t,\r,\n]+
 /* Palabra reservada For */
 ( for ) {return new Symbol(sym.For, yychar, yyline, yytext());}
 
+/* Palabra reservada Print */
+( print ) {return new Symbol(sym.Print, yychar, yyline, yytext());}
+
 /* Operador Igual */
 ( "=" ) {return new Symbol(sym.Igual, yychar, yyline, yytext());}
 
 /* Operador Suma */
 ( "+" ) {return new Symbol(sym.Suma, yychar, yyline, yytext());}
-
-/* Operador Resta */
-( "-" ) {return new Symbol(sym.Resta, yychar, yyline, yytext());}
 
 /* Operador Multiplicacion */
 ( "*" ) {return new Symbol(sym.Multiplicacion, yychar, yyline, yytext());}
@@ -111,10 +114,13 @@ espacio=[ ,\t,\r,\n]+
 {L}({L}|{D})* {return new Symbol(sym.Identificador, yychar, yyline, yytext());}
 
 /* Numero */
-("(-"{D}+")")|{D}+ {return new Symbol(sym.Numero, yychar, yyline, yytext());}
+("-"{D}+)|{D}+ {return new Symbol(sym.Numero, yychar, yyline, yytext());}
 
 /* Flotante */
-("(-"{D}+")")|{D}+ {return new Symbol(sym.Flotante, yychar, yyline, yytext());}
+("-"{D}+"."{D}+)|({D}+"."{D}+) {return new Symbol(sym.Flotante, yychar, yyline, yytext());}
+
+/* Operador Resta */
+( "-" ) {return new Symbol(sym.Resta, yychar, yyline, yytext());}
 
 /* Error de analisis */
  . {return new Symbol(sym.ERROR, yychar, yyline, yytext());}

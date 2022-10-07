@@ -26,6 +26,16 @@ public class Principal {
         String[] rutaS = {"-parser", "Sintax", path + "/src/codigo/Sintax.cup"};
         generar(ruta1, ruta2, rutaS);
     }
+    
+    public static void generarSintaxis() throws Exception{
+                System.out.println(path);
+        
+        String ruta1 = path + "/src/codigo/Lexer.flex";
+        String ruta2 = path + "/src/codigo/LexerCup.flex";
+        String[] rutaS = {"-parser", "Sintax", path + "/src/codigo/Sintax.cup"};
+        generar(ruta1, ruta2, rutaS);
+    }
+    
     public static void generar(String ruta1, String ruta2, String[] rutaS) throws IOException, Exception{
         File archivo;
         archivo = new File(ruta1);

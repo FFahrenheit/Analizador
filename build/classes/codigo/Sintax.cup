@@ -15,13 +15,13 @@ parser code
 }
 :};
 
-terminal Linea, Comillas, T_dato, Int, Cadena, If, Else, Do, While, For,
+terminal Linea, Comillas, T_dato, Int, Float, Cadena, If, Else, Do, While, For, Print,
     Igual, Suma, Resta, Multiplicacion, Division, Op_logico, Op_relacional,
     Op_atribucion, Op_incremento, Op_booleano, Parentesis_a, Parentesis_c,
     Llave_a, Llave_c, Corchete_a, Corchete_c, Main, P_coma, Identificador,
-    Numero, ERROR;
+    Numero, Flotante, ERROR;
 non terminal INICIO, SENTENCIA, DECLARACION, DECLARACION_FOR, IF, IF_ELSE,
-    WHILE, DO_WHILE, FOR, SENTENCIA_BOOLEANA, SENTENCIA_FOR;
+    WHILE, DO_WHILE, FOR, SENTENCIA_BOOLEANA, SENTENCIA_FOR, PRINT;
 
 start with INICIO;
 
@@ -32,6 +32,8 @@ INICIO ::=
 SENTENCIA ::= 
     SENTENCIA DECLARACION |
     DECLARACION |
+    SENTENCIA PRINT |
+    PRINT |
     SENTENCIA IF | 
     IF |
     SENTENCIA IF_ELSE |
@@ -48,7 +50,10 @@ DECLARACION ::=
     Int Identificador Op_atribucion Numero P_coma |
     Int Identificador Igual Numero P_coma |
     Int Identificador Op_incremento P_coma | 
-    Int Op_incremento Identificador P_coma | 
+    Int Op_incremento Identificador P_coma |
+    Float Identificador P_coma | 
+    Float Identificador Op_atribucion Flotante P_coma |
+    Float Identificador Igual Flotante P_coma | 
     T_dato Identificador P_coma | 
     T_dato Identificador Op_atribucion Numero P_coma |
     T_dato Identificador Igual Numero P_coma |
@@ -58,6 +63,12 @@ DECLARACION ::=
     Cadena Identificador Igual Comillas Comillas P_coma |
     Cadena Identificador Op_atribucion Comillas Identificador Comillas P_coma |
     Cadena Identificador Igual Comillas Identificador Comillas P_coma
+;
+PRINT ::=
+    Print Parentesis_a Parentesis_c P_coma |
+    Print Parentesis_a Identificador Parentesis_c P_coma |
+    Print Parentesis_a Comillas Identificador Comillas Parentesis_c P_coma |
+    Print Parentesis_a Comillas Comillas Parentesis_c P_coma 
 ;
 IF ::= If Parentesis_a SENTENCIA_BOOLEANA Parentesis_c Llave_a SENTENCIA Llave_c
 ;

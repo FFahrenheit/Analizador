@@ -1,0 +1,9 @@
+main()
+{
+	String x = "abc";
+	int x = 10;
+	float z = 1.1;
+	if(x == 10){
+		int y = 2;
+	}
+}

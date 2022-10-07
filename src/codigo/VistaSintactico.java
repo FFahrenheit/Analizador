@@ -33,6 +33,11 @@ public class VistaSintactico extends javax.swing.JFrame {
      * Creates new form MainWindowSintactico
      */
     public VistaSintactico() {
+        try {
+            Principal.generarSintaxis();
+        } catch (Exception ex) {
+            Logger.getLogger(VistaSintactico.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
 
         this.lineNumber = new TextLineNumber(this.codeArea);
@@ -74,7 +79,7 @@ public class VistaSintactico extends javax.swing.JFrame {
         codeArea.setColumns(20);
         codeArea.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
         codeArea.setRows(5);
-        codeArea.setText("main()\n{\n\tint x;\n}\n");
+        codeArea.setText("int main()\n{\n\tString a = \"abc\";\n\tString b = \"un_texto\";\n\tprint(\"\");\n\tint x = 10;\n\tfloat z = 1.1;\n\tif(x == 10){\n\t\tint y = 2;\n\t}\n}\n");
         codeScroll.setViewportView(codeArea);
 
         jLabel1.setText("Código");
@@ -215,6 +220,9 @@ public class VistaSintactico extends javax.swing.JFrame {
                 case For:
                     resultado += "  <Reservada while>\t" + lexer.lexeme + "\n";
                     break;
+                case Print:
+                    resultado += "  <Función print>\t" + lexer.lexeme + "\n";
+                    break;
                 case Igual:
                     resultado += "  <Operador igual>\t" + lexer.lexeme + "\n";
                     break;
@@ -271,6 +279,9 @@ public class VistaSintactico extends javax.swing.JFrame {
                     break;
                 case Identificador:
                     resultado += "  <Identificador>\t\t" + lexer.lexeme + "\n";
+                    break;
+                case Flotante:
+                    resultado += "  <Flotante>\t\t" + lexer.lexeme + "\n";
                     break;
                 case Numero:
                     resultado += "  <Numero>\t\t" + lexer.lexeme + "\n";

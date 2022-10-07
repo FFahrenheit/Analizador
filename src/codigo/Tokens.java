@@ -19,6 +19,7 @@ public enum Tokens {
     Do,
     While,
     For,
+    Print,
     Igual,
     Suma,
     Resta,
@@ -39,5 +40,6 @@ public enum Tokens {
     P_coma,
     Identificador,
     Numero,
+    Flotante,
     ERROR
 }

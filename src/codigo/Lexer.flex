@@ -4,6 +4,7 @@ import static codigo.Tokens.*;
 %class Lexer
 %type Tokens
 L=[a-zA-Z_]+
+T=[^0-9a-zA-Z\n\t ]+
 D=[0-9]+
 espacio=[ ,\t,\r]+
 %{
@@ -15,7 +16,7 @@ espacio=[ ,\t,\r]+
 {espacio} {/*Ignore*/}
 
 /* Comentarios */
-( "//"(.)* ) {/*Ignore*/}
+( "//" ) {/*Ignore*/}
 
 /* Salto de linea */
 ( "\n" ) {return Linea;}
@@ -44,14 +45,14 @@ espacio=[ ,\t,\r]+
 /* Palabra reservada For */
 ( for ) {lexeme=yytext(); return For;}
 
+/* Palabra reservada Print */
+( print ) {lexeme=yytext(); return Print;}
+
 /* Operador Igual */
 ( "=" ) {lexeme=yytext(); return Igual;}
 
 /* Operador Suma */
 ( "+" ) {lexeme=yytext(); return Suma;}
-
-/* Operador Resta */
-( "-" ) {lexeme=yytext(); return Resta;}
 
 /* Operador Multiplicacion */
 ( "*" ) {lexeme=yytext(); return Multiplicacion;}
@@ -102,7 +103,13 @@ espacio=[ ,\t,\r]+
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 
 /* Numero */
-("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}
+("-"{D}+)|{D}+ {lexeme=yytext(); return Numero;}
+
+/* Flotante */
+("-"{D}+"."{D})|({D}+"."{D}+) {lexeme=yytext(); return Flotante;}
+
+/* Operador Resta */
+( "-" ) {lexeme=yytext(); return Resta;}
 
 /* Error de analisis */
  . {return ERROR;}
