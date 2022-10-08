@@ -313,7 +313,7 @@ public class VistaSintactico extends javax.swing.JFrame {
 
     private void openOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openOptionActionPerformed
         // TODO add your handling code here:
-        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        JFileChooser jfc = new JFileChooser(System.getProperty("user.dir"));
         jfc.setDialogTitle("Seleccione el codigo fuente a analizar: ");
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Codigo sintactico", "txt");
@@ -341,7 +341,7 @@ public class VistaSintactico extends javax.swing.JFrame {
 
     private void saveOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveOptionActionPerformed
         // TODO add your handling code here:
-        JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
         fileChooser.setDialogTitle("Seleccione la ruta para guardar el archivo");
 
         int userSelection = fileChooser.showSaveDialog(this);

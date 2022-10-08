@@ -7,7 +7,7 @@ package codigo;
 
 /**
  *
- * @author Charly Ponce
+ * @author ivan_
  */
 public enum Tokens {
     Linea,

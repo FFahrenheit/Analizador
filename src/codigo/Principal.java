@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 /**
  *
- * @author Charly Ponce
+ * @author ivan_
  */
 public class Principal {
     private static String path = System.getProperty("user.dir");
