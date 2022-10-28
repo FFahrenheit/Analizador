@@ -1,0 +1,8 @@
+public static void Main(){
+	String hola = "Hola mundo";
+	int i = 0;
+	i = 10 + x;
+	while(true == true){
+		write("Inserta aqui codigo");
+	}
+}

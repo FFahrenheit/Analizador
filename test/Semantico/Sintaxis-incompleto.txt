@@ -1,0 +1,5 @@
+public static void Main(){
+	String x = "hello";
+	int x = ;
+	c;
+}

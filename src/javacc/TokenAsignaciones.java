@@ -65,7 +65,7 @@ class TokenAsignaciones
 			catch(Exception e)
 			{
 				//Si TokenIzq.image no se encuentra en la tabla en la cual se agregan los tokens, el token no ha sido declarado, y se manda un error
-				JOptionPane.showMessageDialog(null, "Error: El identificador " + TokenIzq.image + " No ha sido declarado \r\nLinea: " + TokenIzq.beginLine,"alert", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Error: El identificador " + TokenIzq.image + " No ha sido declarado \r\nLinea: " + TokenIzq.beginLine,"Identificador no declarado",JOptionPane.ERROR_MESSAGE);
                                 return "Error: El identificador " + TokenIzq.image + " No ha sido declarado \r\nLinea: " + TokenIzq.beginLine;
 			}
 		}
@@ -84,7 +84,7 @@ class TokenAsignaciones
 			catch(Exception e)
 			{
 				//si el identificador no existe manda el error
-                                JOptionPane.showMessageDialog(null, "Error: El identificador " + TokenAsig.image + " No ha sido declarado \r\nLinea: " + TokenIzq.beginLine, "alert", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Error: El identificador " + TokenAsig.image + " No ha sido declarado \r\nLinea: " + TokenIzq.beginLine, "Identificador no declarado", JOptionPane.ERROR_MESSAGE);
 				return "Error: El identificador " + TokenAsig.image + " No ha sido declarado \r\nLinea: " + TokenIzq.beginLine;
 			}
 		}
@@ -105,7 +105,7 @@ class TokenAsignaciones
 				return " ";
 			else //Si el tipo de dato no es compatible manda el error
                         {
-                            JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Entero \r\nLinea: " + TokenIzq.beginLine, "alert",JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Entero \r\nLinea: " + TokenIzq.beginLine, "Error de tipos",JOptionPane.ERROR_MESSAGE);
                             return "Error: No se puede convertir " + TokenAsig.image + " a Entero \r\nLinea: " + TokenIzq.beginLine;
                         }
 		}
@@ -115,7 +115,7 @@ class TokenAsignaciones
 				return " ";
 			else
                         {
-                            JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Decimal \r\nLinea: " + TokenIzq.beginLine,"alert", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Decimal \r\nLinea: " + TokenIzq.beginLine,"Error de tipos", JOptionPane.ERROR_MESSAGE);
                             return "Error: No se puede convertir " + TokenAsig.image + " a Decimal \r\nLinea: " + TokenIzq.beginLine;
                         }
 		}
@@ -131,13 +131,13 @@ class TokenAsignaciones
 					return " ";				
 				else
                                 {
-                                    JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Caracter \r\nLinea: " + TokenIzq.beginLine, "alert",JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Caracter \r\nLinea: " + TokenIzq.beginLine, "Error de tipos",JOptionPane.ERROR_MESSAGE);
                                     return "Error: No se puede convertir " + TokenAsig.image + " a Caracter \r\nLinea: " + TokenIzq.beginLine;
                                 }	
 			}
 			else //Si se esta asignando mas de un caracter manda el error 			
                         {
-                            JOptionPane.showMessageDialog(null, "Error: No se puede asignar mas de un valor a un caracter \r\nLinea: " + TokenIzq.beginLine, "alert", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Error: No se puede asignar mas de un valor a un caracter \r\nLinea: " + TokenIzq.beginLine, "Error de tipos", JOptionPane.ERROR_MESSAGE);
                             return "Error: No se puede asignar mas de un valor a un caracter \r\nLinea: " + TokenIzq.beginLine;
                         }
 			
@@ -148,13 +148,13 @@ class TokenAsignaciones
 				return " ";
 			else
                         {
-                            JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Cadena \r\nLinea: " + TokenIzq.beginLine, "alert",JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Error: No se puede convertir " + TokenAsig.image + " a Cadena \r\nLinea: " + TokenIzq.beginLine, "Error de tipos",JOptionPane.ERROR_MESSAGE);
                             return "Error: No se puede convertir " + TokenAsig.image + " a Cadena \r\nLinea: " + TokenIzq.beginLine;
                         }
 		}
 		else
 		{
-                    JOptionPane.showMessageDialog(null,  "El Identificador " + TokenIzq.image + " no ha sido declarado" + " Linea: " + TokenIzq.beginLine, "alert", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,  "El Identificador " + TokenIzq.image + " no ha sido declarado" + " Linea: " + TokenIzq.beginLine, "Identificador no declarado", JOptionPane.ERROR_MESSAGE);
                     return "El Identificador " + TokenIzq.image + " no ha sido declarado" + " Linea: " + TokenIzq.beginLine;
 		}
 	}	  
@@ -172,7 +172,7 @@ class TokenAsignaciones
 		}
 		catch(Exception e)
 		{
-			JOptionPane.showMessageDialog(null, "Error: El identificador " + checkTok.image + " No ha sido declarado \r\nLinea: " + checkTok.beginLine, "alert", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error: El identificador " + checkTok.image + " No ha sido declarado \r\nLinea: " + checkTok.beginLine, "Identificador no declarado", JOptionPane.ERROR_MESSAGE);
                         //Si no lo puede obtener, manda el error
 			return "Error: El identificador " + checkTok.image + " No ha sido declarado \r\nLinea: " + checkTok.beginLine;
 		}

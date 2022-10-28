@@ -1,0 +1,8 @@
+public static void Main() 
+{		
+	String s1 = 1;
+	char c1 = 2, c2;		
+	int n1 = "awa", n2 = 2, n3 = 2, x;			
+	float d1="uwu";
+	no_declarado=2;
+}
