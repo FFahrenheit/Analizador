@@ -17,7 +17,7 @@ import javax.swing.text.*;
  *
  * @author Usuario
  */
-class TextLineNumber extends JPanel
+public class TextLineNumber extends JPanel
 	implements CaretListener, DocumentListener, PropertyChangeListener
 {
 	public final static float LEFT = 0.0f;
