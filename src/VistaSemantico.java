@@ -34,11 +34,6 @@ public class VistaSemantico extends javax.swing.JFrame {
      * Creates new form MainWindowSintactico
      */
     public VistaSemantico() {
-        try {
-            Principal.generarSintaxis();
-        } catch (Exception ex) {
-            Logger.getLogger(VistaSemantico.class.getName()).log(Level.SEVERE, null, ex);
-        }
         initComponents();
 
         this.lineNumber = new TextLineNumber(this.codeArea);

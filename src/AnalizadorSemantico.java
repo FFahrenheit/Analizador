@@ -66,7 +66,7 @@ public class AnalizadorSemantico {
                 if(this.variables.containsKey(varName)){
                     this.error("\"" + varName + "\" ya ha sido declarado", "Error de declaracion");
                 }else{
-                    this.variables.put(varName, 0);
+                    this.variables.put(varName, 1);
                 }
                 
                 j++; //Skip varName token
