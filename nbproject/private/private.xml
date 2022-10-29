@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/ivan_/projects/Analizador/src/AnalizadorSemantico.java</file>
+            <file>file:/C:/Users/ivan_/projects/Analizador/src/comp.java</file>
+            <file>file:/C:/Users/ivan_/projects/Analizador/src/TokenAnalyzer.java</file>
             <file>file:/C:/Users/ivan_/projects/Analizador/src/VistaSemantico.java</file>
+            <file>file:/C:/Users/ivan_/projects/Analizador/src/TokenTypes.java</file>
+            <file>file:/C:/Users/ivan_/projects/Analizador/src/TokenSemantico.java</file>
         </group>
     </open-files>
 </project-private>

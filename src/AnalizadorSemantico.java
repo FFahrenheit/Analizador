@@ -59,6 +59,7 @@ public class AnalizadorSemantico {
         for(int j = 0; j < tokens.size(); j++){
             TokenSemantico t = tokens.get(j);
             System.out.println("[" + (j+1) +  "]" + t);
+            
             if(TokenAnalyzer.isDataType(t.getToken())){
                 String varName = tokens.get(j+1).getToken();
                 
@@ -67,9 +68,10 @@ public class AnalizadorSemantico {
                 }else{
                     this.variables.put(varName, 0);
                 }
-                this.variables.put(varName, this.variables.get(varName)+1);
                 
                 j++; //Skip varName token
+            }else if(TokenAnalyzer.isIdentifier(t.getToken()) && this.variables.containsKey(t.getToken())){
+                this.variables.put(t.getToken(), this.variables.get(t.getToken())+1);
             }
         }
         
