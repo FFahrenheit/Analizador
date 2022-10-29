@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import codigo.*;
 import java.awt.Color;
 import java.io.BufferedWriter;
@@ -215,16 +214,16 @@ public class VistaSemantico extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jLabel7)
                         .addGap(1, 1, 1)
                         .addComponent(linesArea)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -332,6 +331,18 @@ public class VistaSemantico extends javax.swing.JFrame {
             this.resultsArea.setForeground(new Color(0,184,52));
             this.messagesArea.setText("Sin errores de sintaxis");
             this.messagesArea.setForeground(new Color(0, 184, 52));
+            AnalizadorSintactico analizar = new AnalizadorSintactico(codeArea.getText());
+            String warnings = analizar.analyze();
+            if(!warnings.equals("")){
+                int wCount = analizar.getWarningCount();
+                if(wCount == 1){
+                    this.resultsArea.append("\nSe encontró una advertencia");
+                }else{
+                    this.resultsArea.append("\nSe encontraron " + wCount + " advertencias");
+                }
+                this.messagesArea.append(warnings);
+                this.messagesArea.setForeground(new Color(209, 147, 0));
+            }
         }catch(ParseException e){
             System.out.println(e.getMessage());
             System.out.println("\\u005ctAnalizador ha terminado sin exito");
