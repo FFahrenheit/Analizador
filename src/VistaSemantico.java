@@ -331,7 +331,7 @@ public class VistaSemantico extends javax.swing.JFrame {
             this.resultsArea.setForeground(new Color(0,184,52));
             this.messagesArea.setText("Sin errores de sintaxis");
             this.messagesArea.setForeground(new Color(0, 184, 52));
-            AnalizadorSintactico analizar = new AnalizadorSintactico(codeArea.getText());
+            AnalizadorSemantico analizar = new AnalizadorSemantico(codeArea.getText());
             String warnings = analizar.analyze();
             if(!warnings.equals("")){
                 int wCount = analizar.getWarningCount();

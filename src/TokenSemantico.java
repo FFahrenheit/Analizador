@@ -8,11 +8,11 @@
  *
  * @author ivan_
  */
-public class TokenSintactico {
+public class TokenSemantico {
     private String token;
     private int linea;
 
-    public TokenSintactico(String token, int linea) {
+    public TokenSemantico(String token, int linea) {
         this.token = token;
         this.linea = linea;
     }

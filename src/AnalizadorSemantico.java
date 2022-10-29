@@ -5,6 +5,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 
@@ -12,17 +13,15 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class AnalizadorSintactico {
-    private String codigo;
+public class AnalizadorSemantico {
     private String[] lineas;
-    private ArrayList<TokenSintactico> tokens;
-    private int index;
-    private ArrayList<String> variables;
+    private ArrayList<TokenSemantico> tokens;
+    private HashMap<String, Integer> variables;
     private int warningCount;
+    private String warnings;
     
-    public AnalizadorSintactico(String fuente)
+    public AnalizadorSemantico(String fuente)
     {
-        this.codigo = fuente;
         this.lineas = fuente.split("\n");
         System.out.println("" + lineas.length + " a analizar");
         tokens = new ArrayList<>();
@@ -30,7 +29,6 @@ public class AnalizadorSintactico {
     
     public String analyze()
     {
-        String warnings = "";
         for(int i = 0; i < lineas.length; i++)
         {
             String linea = lineas[i];
@@ -51,49 +49,45 @@ public class AnalizadorSintactico {
                 System.out.println("Resto: " + resto);
                 if(!token.equals(""))
                 {
-                    tokens.add(new TokenSintactico(token, i + 1));
+                    tokens.add(new TokenSemantico(token, i + 1));
                 }
             }while(!resto.equals(""));
             
         }
-        this.variables = new ArrayList<>();
-        this.warningCount = 0;
+        this.variables = new HashMap<>();
         
         for(int j = 0; j < tokens.size(); j++){
-            TokenSintactico t = tokens.get(j);
+            TokenSemantico t = tokens.get(j);
             System.out.println("[" + (j+1) +  "]" + t);
             if(TokenAnalyzer.isDataType(t.getToken())){
                 String varName = tokens.get(j+1).getToken();
-                if(this.isAlreadyDeclared(varName)){
+                
+                if(this.variables.containsKey(varName)){
                     this.error("\"" + varName + "\" ya ha sido declarado", "Error de declaracion");
                 }else{
-                    this.variables.add(varName);
+                    this.variables.put(varName, 0);
                 }
+                this.variables.put(varName, this.variables.get(varName)+1);
+                
+                j++; //Skip varName token
             }
         }
         
-        for (int i = 0; i < variables.size(); i++) {
-            int count = 0;
-            for (int j = 0; j < tokens.size(); j++) {
-                if(variables.get(i).equals(tokens.get(j).getToken())){
-                    count += 1;
-                }
-            }
+        this.warnings = "";
+        this.warningCount = 0;
+        
+        this.variables.forEach((varName, count) -> {
             if(count < 2){
                 this.warningCount += 1;
-                warnings += "\nAdvertencia: \"" + variables.get(i) + "\" está declarada pero no es usada";
+                this.warnings += "\nAdvertencia: \"" + varName + "\" está declarada pero no es usada";
             }
-        }
+        });
         
-        return warnings;
+        return this.warnings;
     }
     
     public int getWarningCount(){
         return this.warningCount;
-    }
-    
-    private boolean isAlreadyDeclared(String token){
-        return this.variables.contains(token);
     }
     
     public String getTokenUntil(String input)
